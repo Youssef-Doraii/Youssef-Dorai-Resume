@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youssef Dorai - Creative Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neon-pink': '#ff0080',
+                        'neon-purple': '#8000ff',
+                        'neon-orange': '#ff4000',
+                        'neon-yellow': '#ffff00',
+                        'cyber-blue': '#00ffff'
+                    },
+                    fontFamily: {
+                        'cyber': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        .glow-text {
+            text-shadow: 0 0 20px currentColor;
+        }
+        
+        .neon-glow {
+            box-shadow: 0 0 20px currentColor, inset 0 0 20px rgba(255,255,255,0.1);
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .wave-divider {
+            background: linear-gradient(45deg, #ff0080, #8000ff, #00ffff);
+            height: 4px;
+            background-size: 200% 200%;
+            animation: wave 3s ease-in-out infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .holographic {
+            background: linear-gradient(45deg, #ff0080, #8000ff, #00ffff, #ffff00);
+            background-size: 400% 400%;
+            animation: hologram 4s ease-in-out infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        @keyframes hologram {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #ff0080, #8000ff);
+            animation: progress-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes progress-glow {
+            0% { box-shadow: 0 0 5px #ff0080; }
+            100% { box-shadow: 0 0 20px #8000ff; }
+        }
+    </style>
+</head>
+<body class="bg-black text-white font-cyber overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-black/8<div class="bg-gray-900/50 p-6 rounded-2xl border border-neon-purple/30 h-full flex flex-col justify-between"></nav>
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold holographic">YD</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#hero" class="hover:text-neon-pink transition-colors">Home</a>
+                    <a href="#about" class="hover:text-neon-purple transition-colors">About</a>
+                    <a href="#skills" class="hover:text-cyber-blue transition-colors">Skills</a>
+                    <a href="#projects" class="hover:text-neon-orange transition-colors">Projects</a>
+                    <a href="#contact" class="hover:text-neon-yellow transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-neon-purple/20 via-black to-neon-pink/20"></div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 floating">
+            <div class="w-16 h-16 bg-neon-pink/30 rounded-full neon-glow"></div>
+        </div>
+        <div class="absolute top-40 right-20 floating" style="animation-delay: -2s;">
+            <div class="w-12 h-12 bg-cyber-blue/30 rounded-lg neon-glow"></div>
+        </div>
+        <div class="absolute bottom-40 left-20 floating" style="animation-delay: -4s;">
+            <div class="w-20 h-20 bg-neon-orange/30 rounded-full neon-glow"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <!-- Robot Avatar -->
+            <div class="mb-8 floating">
+                <svg class="w-48 h-48 mx-auto" viewBox="0 0 200 200" fill="none">
+                    <!-- Robot Head -->
+                    <rect x="50" y="40" width="100" height="80" rx="20" fill="url(#robotGradient)" stroke="#ff0080" stroke-width="2"/>
+                    <!-- Eyes -->
+                    <circle cx="70" cy="70" r="8" fill="#00ffff" class="animate-pulse"/>
+                    <circle cx="130" cy="70" r="8" fill="#00ffff" class="animate-pulse"/>
+                    <!-- Mouth -->
+                    <rect x="85" y="90" width="30" height="4" rx="2" fill="#ffff00"/>
+                    <!-- Antenna -->
+                    <line x1="100" y1="40" x2="100" y2="20" stroke="#ff0080" stroke-width="3"/>
+                    <circle cx="100" cy="20" r="4" fill="#ff0080" class="animate-ping"/>
+                    <!-- Body -->
+                    <rect x="60" y="120" width="80" height="60" rx="10" fill="url(#bodyGradient)" stroke="#8000ff" stroke-width="2"/>
+                    <!-- Arms -->
+                    <rect x="30" y="130" width="30" height="8" rx="4" fill="#ff4000"/>
+                    <rect x="140" y="130" width="30" height="8" rx="4" fill="#ff4000"/>
+                    
+                    <defs>
+                        <linearGradient id="robotGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff0080"/>
+                            <stop offset="100%" style="stop-color:#8000ff"/>
+                        </linearGradient>
+                        <linearGradient id="bodyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#8000ff"/>
+                            <stop offset="100%" style="stop-color:#00ffff"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl font-black mb-6 glow-text text-neon-pink">
+                Hey, I'm Youssef 👋
+            </h1>
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 holographic">
+                Creative Developer & Software Engineer Student
+            </h2>
+
+            
+            <!-- Add margin-bottom to create space between buttons and wave divider -->
+            <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+                <a href="mailto:yousseff.dorai@gmail.com" class="px-8 py-4 bg-gradient-to-r from-neon-pink to-neon-purple rounded-full font-bold text-lg neon-glow hover:scale-105 transition-transform flex items-center justify-center">
+                    Send Email
+                </a>
+                <button class="px-8 py-4 border-2 border-cyber-blue text-cyber-blue rounded-full font-bold text-lg hover:bg-cyber-blue hover:text-black transition-all"
+                    onclick="document.querySelector('#projects').scrollIntoView({ behavior: 'smooth' });">
+                    See Projects
+                </button>
+            </div>
+        </div>
+        
+        <!-- Make the wave divider position lower -->
+        <div class="wave-divider absolute bottom-0 w-full"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-black text-center mb-16 holographic">About Me</h2>
+            
+            <!-- Add this paragraph below the heading -->
+            <p class="text-xl md:text-2xl mb-12 max-w-4xl mx-auto text-gray-300 leading-relaxed text-center">
+                Software Engineering Student, Developer Intern, and Creative Content Creator passionate about building innovative solutions. Experienced in leadership, cross-cultural communication, and project management with a focus on creating technological impact through diverse perspectives.
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-stretch">
+                <div class="bg-gray-900/50 p-6 rounded-2xl border border-neon-purple/30 h-full flex flex-col">
+                    <h3 class="text-2xl font-bold mb-8 text-neon-yellow">Contact Info</h3>
+                    <ul class="space-y-5 text-gray-300 text-lg">
+                        <li class="flex items-center gap-3">
+                            <span class="text-2xl">📍</span>
+                            <span>Monastir, Tunisia</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-2xl">📧</span>
+                            <span>yousseff.dorai@gmail.com</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-2xl">📱</span>
+                            <span>+216 22757540</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-2xl">💼</span>
+                            <a href="https://www.linkedin.com/in/youssef-dorai" class="text-cyber-blue hover:underline font-semibold">LinkedIn Profile</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-gray-900/50 p-8 rounded-2xl border border-neon-pink/30 h-full flex flex-col justify-between">
+                    <h3 class="text-3xl font-bold mb-6 text-neon-pink">Languages</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Arabic</span>
+                                <span class="text-neon-yellow">Native</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-3">
+                                <div class="progress-bar h-3 rounded-full w-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">French</span>
+                                <span class="text-neon-yellow">C1 (TCF - 517/699)</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-3">
+                                <div class="progress-bar h-3 rounded-full w-[70%]"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">TCF Certificate - France Éducation international (Jan 2025)</p>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">English</span>
+                                <span class="text-neon-yellow">C2 (EF SET - 73/100)</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-3">
+                                <div class="progress-bar h-3 rounded-full w-[85%]"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">EF SET Certificate (Oct 2023)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gradient-to-r from-gray-900/50 to-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-black text-center mb-16 holographic">Skills</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Tech Skills -->
+                <div class="bg-black/50 p-8 rounded-2xl border border-neon-pink/30 card-hover">
+                    <div class="text-4xl mb-4 text-neon-pink">🚀</div>
+                    <h3 class="text-2xl font-bold mb-6 text-neon-pink">Tech Skills</h3>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-neon-pink rounded-full mr-3"></span>Programming, OOP</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-neon-pink rounded-full mr-3"></span>Software design</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-neon-pink rounded-full mr-3"></span>Web technologies</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-neon-pink rounded-full mr-3"></span>Database management</li>
+                    </ul>
+                </div>
+                
+                <!-- Soft Skills -->
+                <div class="bg-black/50 p-8 rounded-2xl border border-cyber-blue/30 card-hover">
+                    <div class="text-4xl mb-4 text-cyber-blue">🧠</div>
+                    <h3 class="text-2xl font-bold mb-6 text-cyber-blue">Soft Skills</h3>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-cyber-blue rounded-full mr-3"></span>Leadership</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-cyber-blue rounded-full mr-3"></span>Project management</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-cyber-blue rounded-full mr-3"></span>Critical thinking</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-cyber-blue rounded-full mr-3"></span>Creativity</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-cyber-blue rounded-full mr-3"></span>Teamwork</li>
+                    </ul>
+                </div>
+                
+                <!-- Marketing & Communication -->
+                <div class="bg-black/50 p-8 rounded-2xl border border-neon-orange/30 card-hover">
+                    <div class="text-4xl mb-4 text-neon-orange">📢</div>
+                    <h3 class="text-2xl font-bold mb-6 text-neon-orange">Marketing & Communication</h3>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-neon-orange rounded-full mr-3"></span>Social media management</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-neon-orange rounded-full mr-3"></span>Content creation</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-neon-orange rounded-full mr-3"></span>Event coordination</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Timeline -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-black text-center mb-16 holographic">Education</h2>
+            <div class="relative flex flex-col items-center">
+                <!-- Timeline line -->
+                <div class="absolute left-1/2 top-0 -translate-x-1/2 w-1 h-full bg-gradient-to-b from-neon-purple/70 via-black/40 to-neon-pink/70 z-0"></div>
+                
+                <div class="space-y-0 w-full">
+                    <!-- Card 1 -->
+                    <div class="relative flex justify-center z-10">
+                        <div class="bg-black/80 p-8 rounded-2xl border border-neon-purple/30 max-w-xl w-full card-hover shadow-lg">
+                            <!-- Timeline dot -->
+                            <div class="absolute left-1/2 -top-4 transform -translate-x-1/2 z-20">
+                                <div class="w-6 h-6 bg-neon-purple rounded-full border-4 border-black shadow-lg"></div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-neon-purple mb-2">Licence en Génie Logiciel</h3>
+                            <p class="text-gray-300 mb-2">Institut Supérieur d'Informatique et de Mathématiques de Monastir</p>
+                            <p class="text-neon-yellow">Sep 2023 – Present</p>
+                        </div>
+                    </div>
+                    <!-- Connector -->
+                    <div class="h-12"></div>
+                    <!-- Card 2 -->
+                    <div class="relative flex justify-center z-10">
+                        <div class="bg-black/80 p-8 rounded-2xl border border-neon-pink/30 max-w-xl w-full card-hover shadow-lg">
+                            <!-- Timeline dot -->
+                            <div class="absolute left-1/2 -top-4 transform -translate-x-1/2 z-20">
+                                <div class="w-6 h-6 bg-neon-pink rounded-full border-4 border-black shadow-lg"></div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-neon-pink mb-2">Baccalauréat en Sciences Techniques</h3>
+                            <p class="text-gray-300 mb-2">AI Manahel Academy</p>
+                            <p class="text-neon-yellow">2023 - Mention Très Bien</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="py-20 bg-gradient-to-r from-black to-gray-900/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-black text-center mb-16 holographic">Experience</h2>
+            
+            <div class="bg-black/50 p-8 rounded-2xl border border-cyber-blue/30 card-hover max-w-4xl mx-auto">
+                <div class="flex items-start space-x-4">
+                    <div class="text-4xl">💻</div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-cyber-blue mb-2">Full-Stack Developer Intern</h3>
+                        <p class="text-neon-yellow font-semibold mb-4">Stravos • July 2025 – Present</p>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-start"><span class="w-2 h-2 bg-cyber-blue rounded-full mr-3 mt-2"></span>Working on full-stack development tasks</li>
+                            <li class="flex items-start"><span class="w-2 h-2 bg-cyber-blue rounded-full mr-3 mt-2"></span>Contributing to real-world projects with mentorship</li>
+                            <li class="flex items-start"><span class="w-2 h-2 bg-cyber-blue rounded-full mr-3 mt-2"></span>Improving frontend/backend integration and testing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-black text-center mb-16 holographic">Certifications</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-black/50 p-8 rounded-2xl border border-neon-pink/30 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-4 h-4 bg-neon-pink rounded-full mr-3"></div>
+                        <h3 class="text-2xl font-bold text-neon-pink">Cybersecurity</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-neon-pink rounded-full mr-3 mt-2"></span>
+                            <div>
+                                <p class="font-semibold">Vulnerability Management in Cybersecurity</p>
+                                <p class="text-neon-yellow text-sm">LinkedIn Learning - July 2025</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-neon-pink rounded-full mr-3 mt-2"></span>
+                            <div>
+                                <p class="font-semibold">Introduction to Cybersecurity</p>
+                                <p class="text-neon-yellow text-sm">Cisco - June 2025</p>
+                                <p class="text-xs text-gray-400">Skills: Threat Detection, Privacy, Risk Assessment, Network Security</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-black/50 p-8 rounded-2xl border border-cyber-blue/30 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-4 h-4 bg-cyber-blue rounded-full mr-3"></div>
+                        <h3 class="text-2xl font-bold text-cyber-blue">AI & Development</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-cyber-blue rounded-full mr-3 mt-2"></span>
+                            <div>
+                                <p class="font-semibold">Building Your Own Database Agent</p>
+                                <p class="text-neon-yellow text-sm">Microsoft - June 2025</p>
+                                <p class="text-xs text-gray-400">Skills: SQL, RAG, Assistants API</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-black text-center mb-16 holographic">Personal Projects</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- TodoList App -->
+                <div class="bg-black/50 p-8 rounded-2xl border border-neon-purple/30 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-4 h-4 bg-neon-purple rounded-full mr-3"></div>
+                        <h3 class="text-2xl font-bold text-neon-purple">TodoList App</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">First React project built during internship. Organizes tasks by Category > Section > Todo with visual progress tracking and responsive design.</p>
+                    <div class="mb-4">
+                        <span class="inline-block bg-neon-purple/20 text-neon-purple px-3 py-1 rounded-full text-sm mr-2 mb-2">React</span>
+                        <span class="inline-block bg-neon-purple/20 text-neon-purple px-3 py-1 rounded-full text-sm mr-2 mb-2">TypeScript</span>
+                        <span class="inline-block bg-neon-purple/20 text-neon-purple px-3 py-1 rounded-full text-sm mr-2 mb-2">React Query</span>
+                        <span class="inline-block bg-neon-purple/20 text-neon-purple px-3 py-1 rounded-full text-sm mr-2 mb-2">Vite</span>
+                    </div>
+                    <a href="https://github.com/Youssef-Doraii/todolist" class="text-cyber-blue hover:underline">View Source Code →</a>
+                </div>
+                
+                <!-- Pac-Man Java CLI -->
+                <div class="bg-black/50 p-8 rounded-2xl border border-neon-yellow/30 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-4 h-4 bg-neon-yellow rounded-full mr-3"></div>
+                        <h3 class="text-2xl font-bold text-neon-yellow">Pac-Man Java CLI</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">Simplified Pac-Man game in Java with object-oriented design. Implemented game loops, collision detection, and custom CLI rendering systems.</p>
+                    <div class="mb-4">
+                        <span class="inline-block bg-neon-yellow/20 text-neon-yellow px-3 py-1 rounded-full text-sm mr-2 mb-2">Java</span>
+                        <span class="inline-block bg-neon-yellow/20 text-neon-yellow px-3 py-1 rounded-full text-sm mr-2 mb-2">OOP</span>
+                        <span class="inline-block bg-neon-yellow/20 text-neon-yellow px-3 py-1 rounded-full text-sm mr-2 mb-2">Game Development</span>
+                        <span class="inline-block bg-neon-yellow/20 text-neon-yellow px-3 py-1 rounded-full text-sm mr-2 mb-2">Algorithms</span>
+                    </div>
+                    <p class="text-gray-400">Key learning: Advanced algorithms, state management, and terminal-based UI design</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteering -->
+    <section class="py-20 bg-gradient-to-r from-gray-900/50 to-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-black text-center mb-16 holographic">Volunteering & Exchange</h2>
+            
+            <div class="space-y-8">
+                <!-- AIESEC Tunisia -->
+                <div class="bg-black/50 p-8 rounded-2xl border border-neon-pink/30 card-hover">
+                    <div class="flex items-start space-x-4">
+                        <div class="text-4xl">🌍</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-neon-pink mb-2">AIESEC Tunisia - Member, AIESECer</h3>
+                            <p class="text-neon-yellow font-semibold mb-4">2023 – Present</p>
+                            <ul class="space-y-2 text-gray-300">
+                                <li class="flex items-start"><span class="w-2 h-2 bg-neon-pink rounded-full mr-3 mt-2"></span>Organized events for 300+ attendees</li>
+                                <li class="flex items-start"><span class="w-2 h-2 bg-neon-pink rounded-full mr-3 mt-2"></span>Managed B2B partnerships (+20% growth in 6 months)</li>
+                                <li class="flex items-start"><span class="w-2 h-2 bg-neon-pink rounded-full mr-3 mt-2"></span>Created dashboards and analyzed event data</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AIESEC Egypt -->
+                <div class="bg-black/50 p-8 rounded-2xl border border-neon-orange/30 card-hover">
+                    <div class="flex items-start space-x-4">
+                        <div class="text-4xl">🏺</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-neon-orange mb-2">AIESEC Egypt - Global Volunteer</h3>
+                            <p class="text-neon-yellow font-semibold mb-4">July–Aug 2024</p>
+                            <p class="text-gray-300 mb-4">SDG 8: Decent Work and Economic Growth</p>
+                            <ul class="space-y-2 text-gray-300">
+                                <li class="flex items-start"><span class="w-2 h-2 bg-neon-orange rounded-full mr-3 mt-2"></span>Created content to promote Egyptian culture and tourism</li>
+                                <li class="flex items-start"><span class="w-2 h-2 bg-neon-orange rounded-full mr-3 mt-2"></span>Traveled to 13 cities in 14 days</li>
+                                <li class="flex items-start"><span class="w-2 h-2 bg-neon-orange rounded-full mr-3 mt-2"></span>Collaborated with international teams</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notre Grand Bleu -->
+                <div class="bg-black/50 p-8 rounded-2xl border border-cyber-blue/30 card-hover">
+                    <div class="flex items-start space-x-4">
+                        <div class="text-4xl">🌊</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-cyber-blue mb-2">Notre Grand Bleu</h3>
+                            <p class="text-neon-yellow font-semibold mb-4">2019 – Present</p>
+                            <p class="text-gray-300 mb-4">VP of Communication & HR (2021–2022)</p>
+                            <ul class="space-y-2 text-gray-300">
+                                <li class="flex items-start"><span class="w-2 h-2 bg-cyber-blue rounded-full mr-3 mt-2"></span>Led campaigns like Blue November and beach cleanups</li>
+                                <li class="flex items-start"><span class="w-2 h-2 bg-cyber-blue rounded-full mr-3 mt-2"></span>Supervised environmental protection initiatives</li>
+                                <li class="flex items-start"><span class="w-2 h-2 bg-cyber-blue rounded-full mr-3 mt-2"></span>Supervised sea turtle nesting on Kuriat islands</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-neon-purple/10 via-black to-neon-pink/10"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <h2 class="text-5xl font-black text-center mb-16 holographic">Let's Connect!</h2>
+            
+            <div class="text-center">
+                <p class="text-2xl text-gray-300 mb-8">Ready to build something amazing together?</p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <a href="mailto:yousseff.dorai@gmail.com" class="px-8 py-4 bg-gradient-to-r from-neon-pink to-neon-purple rounded-full font-bold text-lg neon-glow hover:scale-105 transition-transform">
+                        Send Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/youssef-dorai" class="px-8 py-4 border-2 border-cyber-blue text-cyber-blue rounded-full font-bold text-lg hover:bg-cyber-blue hover:text-black transition-all">
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-neon-purple/30">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-gray-400">© 2025 Youssef Dorai. Crafted with 💜</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-black/90');
+            } else {
+                nav.classList.remove('bg-black/90');
+            }
+        });
+
+        // Add click handlers for buttons
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('Download CV')) {
+                button.addEventListener('click', () => {
+                    // Create a link to your CV file
+                    const link = document.createElement('a');
+                    link.href = './assets/Youssef_Dorai_CV.pdf'; // Update path to your actual CV file
+                    link.download = 'Youssef_Dorai_CV.pdf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                });
+            }
+            
+            if (button.textContent.includes('See Projects')) {
+                button.addEventListener('click', () => {
+                    document.querySelector('#projects').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
