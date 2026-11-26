@@ -7,7 +7,7 @@
   <meta name="description" content="Youssef Dorai makes social media videos and builds websites in Monastir, Tunisia. See an AI trip planner, a real estate site and reels with 100K+ views.">
   <meta name="page-type" content="service">
   <meta name="site-kind" content="other">
-  <meta name="theme-color" content="#F5F2EA">
+  <meta name="theme-color" content="#0C1322">
   <link rel="canonical" href="https://youssef-doraii.github.io/Youssef-Dorai-Resume/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
@@ -43,8 +43,9 @@
   </script>
 </head>
 <body>
+<canvas class="bg-canvas" aria-hidden="true"></canvas>
 <!--
-  Kind: service (a person who is hired). Palette from the LinkedIn banner: cream, navy, pink-red.
+  Kind: service (a person who is hired). Colour: three themes in styles.css (night is the default; data-theme="banner" or "film" on <html> switches).
   Type: Bricolage Grotesque (display) + Figtree (text). Hero: split with an edit timeline.
   Rhythm: one dark band (the contact close). Moment: the email underline draws once.
 
@@ -55,6 +56,7 @@
   <div class="wrap nav__inner">
     <a class="skip-link" href="#top">Skip to content</a>
     <a class="nav__brand" href="#top">Youssef Dorai</a>
+    <span class="rec" aria-hidden="true"><span class="rec__dot"></span>REC <span class="rec__tc" data-timecode>00:00:00:00</span></span>
     <nav aria-label="Main">
       <ul class="nav__links">
         <li><a href="#work">Work</a></li>
@@ -80,8 +82,11 @@
         </div>
       </div>
 
-      <div class="hero__photo media media--portrait" data-file="assets/youssef.jpg" data-initials="YD">
+      <div class="hero__frame">
+        <div class="hero__photo media media--portrait" data-file="assets/youssef.jpg" data-initials="YD">
         <img src="assets/youssef.jpg" alt="Portrait of Youssef Dorai" width="800" height="1000" fetchpriority="high" onerror="this.parentNode.classList.add('is-missing')">
+      </div>
+        <span class="vf" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       </div>
 
       <div class="timeline" data-timeline aria-label="Projects on two tracks: content and code" role="group">

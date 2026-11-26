@@ -119,4 +119,108 @@
       btn._t = setTimeout(() => { btn.textContent = label; }, 2200);
     });
   });
+
+  /* ---------- the background grid ----------
+     A graph-paper grid like the LinkedIn banner. Squares under the pointer light up and fade,
+     like scrubbing footage. It only animates while something is fading, then it rests. */
+  const canvas = document.querySelector('.bg-canvas');
+  if (canvas && canvas.getContext) {
+    root.classList.add('has-canvas');
+    const ctx = canvas.getContext('2d');
+    const CELL = 40;
+    const heat = new Map();          // "col,row" -> 0..1
+    let w = 0, h = 0, dpr = 1, colours = {}, raf = 0, last = null, pointer = null;
+
+    const readColours = () => {
+      const cs = getComputedStyle(root);
+      colours = {
+        grid: cs.getPropertyValue('--grid').trim(),
+        a: cs.getPropertyValue('--accent').trim(),
+        b: cs.getPropertyValue('--clip-a').trim()
+      };
+    };
+    const size = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = innerWidth; h = innerHeight;
+      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      draw();
+    };
+    const draw = () => {
+      ctx.clearRect(0, 0, w, h);
+      // lit squares
+      for (const [key, v] of heat) {
+        const [c, r] = key.split(',').map(Number);
+        ctx.globalAlpha = v * 0.5;
+        ctx.fillStyle = (c + r) % 3 === 0 ? colours.b : colours.a;
+        ctx.fillRect(c * CELL + 1, r * CELL + 1, CELL - 1, CELL - 1);
+      }
+      ctx.globalAlpha = 1;
+      // grid lines
+      ctx.strokeStyle = colours.grid; ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (let x = 0.5; x < w; x += CELL) { ctx.moveTo(x, 0); ctx.lineTo(x, h); }
+      for (let y = 0.5; y < h; y += CELL) { ctx.moveTo(0, y); ctx.lineTo(w, y); }
+      ctx.stroke();
+      // the glow: grid lines near the pointer pick up the accent
+      if (pointer) {
+        const g = ctx.createRadialGradient(pointer.x, pointer.y, 0, pointer.x, pointer.y, 240);
+        g.addColorStop(0, colours.a); g.addColorStop(1, 'transparent');
+        ctx.globalAlpha = 0.55; ctx.strokeStyle = g; ctx.stroke(); ctx.globalAlpha = 1;
+      }
+    };
+    const tick = () => {
+      for (const [k, v] of heat) { const n = v * 0.955 - 0.003; n <= 0 ? heat.delete(k) : heat.set(k, n); }
+      draw();
+      raf = heat.size ? requestAnimationFrame(tick) : 0;
+    };
+    const light = (x, y, v) => {
+      const k = Math.floor(x / CELL) + ',' + Math.floor(y / CELL);
+      heat.set(k, Math.max(heat.get(k) || 0, v));
+    };
+    const onMove = e => {
+      // fill the squares between the last point and this one, so a fast swipe leaves a full trail
+      const p = { x: e.clientX, y: e.clientY };
+      if (last) {
+        const steps = Math.ceil(Math.hypot(p.x - last.x, p.y - last.y) / (CELL / 2));
+        for (let i = 1; i <= steps; i++) light(last.x + (p.x - last.x) * i / steps, last.y + (p.y - last.y) * i / steps, 1);
+      } else light(p.x, p.y, 1);
+      last = p; pointer = e.pointerType === 'mouse' ? p : null;
+      if (!raf) raf = requestAnimationFrame(tick);
+    };
+
+    readColours(); size();
+    addEventListener('resize', size);
+    if (!reduce) {
+      addEventListener('pointermove', onMove, { passive: true });
+      addEventListener('pointerdown', onMove, { passive: true });
+      document.documentElement.addEventListener('pointerleave', () => { last = null; pointer = null; draw(); });
+      addEventListener('blur', () => { last = null; });
+    }
+    // a theme switch re-reads the colours
+    new MutationObserver(() => { readColours(); draw(); }).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  }
+
+  /* ---------- the timecode: the page is the clip, the scroll position is the playhead ---------- */
+  const tc = document.querySelector('[data-timecode]');
+  if (tc) {
+    const LENGTH = 90; // the whole page "plays" as a 90-second clip, at 24 fps like the banner
+    const pad = n => String(n).padStart(2, '0');
+    let pending = false;
+    const update = () => {
+      pending = false;
+      const max = document.documentElement.scrollHeight - innerHeight;
+      const t = max > 0 ? (scrollY / max) * LENGTH : 0;
+      const sec = Math.floor(t), fr = Math.floor((t - sec) * 24);
+      tc.textContent = `00:${pad(Math.floor(sec / 60))}:${pad(sec % 60)}:${pad(fr)}`;
+    };
+    addEventListener('scroll', () => { if (!pending) { pending = true; requestAnimationFrame(update); } }, { passive: true });
+    update();
+  }
+
+  /* ---------- theme from the URL, for comparing: ?theme=banner or ?theme=film ---------- */
+  const t = new URLSearchParams(location.search).get('theme');
+  if (t && /^(night|banner|film)$/.test(t)) {
+    if (t === 'night') root.removeAttribute('data-theme'); else root.dataset.theme = t;
+  }
 })();
