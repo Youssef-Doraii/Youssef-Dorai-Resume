@@ -34,15 +34,11 @@ Export them at 720p, H.264, about 2 to 4 MB each. GitHub refuses files over 100 
 link. A version with the stand-in photo is already here. Replace it with a new screenshot once
 your photo is in.
 
-## Links to fill in (in index.html)
+## Links still to fill in (in index.html)
 
-Search index.html for `YOUR_` and replace each one:
+Search index.html for `YOUR_`:
 
-- `https://YOUR_IMMOX_URL`: the live IMMOX site
-- `https://YOUR_EGYPT_REELS_URL`: the Egypt reels or blog
-- `https://YOUR_GRADUATION_TIKTOK_URL`: the graduation TikTok
-- `https://www.instagram.com/YOUR_INSTAGRAM_HANDLE`: your Instagram
-- `https://www.tiktok.com/@YOUR_TIKTOK_HANDLE`: your TikTok
+- `https://YOUR_GRADUATION_INSTAGRAM_URL`: the graduation reel on Instagram
 
-On the live site, any link still holding `YOUR_` is hidden, so nobody lands on a dead link.
-On localhost it shows with a dashed outline so you can spot it.
+Until it's set, that link is hidden on the live site. The Egypt reels play on the page
+(their sound is removed, so no music rights issue).
