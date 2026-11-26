@@ -166,7 +166,7 @@
       for (const [key, v] of heat) {
         const [c, r] = key.split(',').map(Number);
         if (blocked(c * CELL, r * CELL, rects)) continue;
-        ctx.globalAlpha = v * 0.65;
+        ctx.globalAlpha = v * 0.5;
         ctx.fillStyle = (c + r) % 3 === 0 ? colours.b : colours.a;
         ctx.fillRect(c * CELL + 1, r * CELL + 1, CELL - 1, CELL - 1);
       }
@@ -181,7 +181,7 @@
       if (pointer) {
         const g = ctx.createRadialGradient(pointer.x, pointer.y, 0, pointer.x, pointer.y, 220);
         g.addColorStop(0, colours.a); g.addColorStop(1, 'transparent');
-        ctx.globalAlpha = 0.6; ctx.lineWidth = 1; ctx.strokeStyle = g; ctx.stroke(); ctx.globalAlpha = 1; ctx.lineWidth = 1;
+        ctx.globalAlpha = 0.45; ctx.lineWidth = 1; ctx.strokeStyle = g; ctx.stroke(); ctx.globalAlpha = 1; ctx.lineWidth = 1;
       }
     };
     const tick = () => {
