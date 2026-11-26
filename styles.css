@@ -322,7 +322,7 @@ a.is-todo-hidden { display: none !important; }
   background: var(--panel); color: var(--text);
   box-shadow: inset 3px 0 0 var(--text);
 }
-#egypt .tags li, #social .tags li, #bistrot .tags li, #sos .tags li { box-shadow: inset 3px 0 0 var(--clip-a); }
+#egypt .tags li, #social .tags li, #bistrot .tags li, #sos .tags li, #careerday .tags li { box-shadow: inset 3px 0 0 var(--clip-a); }
 
 /* browser frame, cut by the panel's foot */
 .browser {
