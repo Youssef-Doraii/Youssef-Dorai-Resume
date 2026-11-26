@@ -519,7 +519,14 @@ a.is-todo-hidden { display: none !important; }
   .timeline__label { padding-left: 10px; }
   .timeline__track { height: 52px; }
   .clip { top: 4px; bottom: 4px; }
-  .clip { font-size: 13px; padding: 0 8px; }
+  .clip { font-size: 13px; padding: 0 6px; }
+  .timeline { --label: 64px; }
+  /* a phone fits four content clips: SOS stays in the work list */
+  .clip--sos { display: none; }
+  .clip--aiesec { --start: 0 !important; --len: 26.5 !important; }
+  .clip--egypt { --start: 28 !important; --len: 22.5 !important; }
+  .clip--bistrot { --start: 52 !important; --len: 20.5 !important; }
+  .clip--social { --start: 74 !important; --len: 26 !important; }
   .section__head { margin-bottom: 32px; }
   .card__visual { height: auto; aspect-ratio: 4 / 3.4; }
   .card__visual--reels { padding: 20px; gap: 10px; }
