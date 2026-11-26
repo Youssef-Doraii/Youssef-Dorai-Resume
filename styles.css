@@ -500,7 +500,7 @@ a.is-todo-hidden { display: none !important; }
   .timeline__label { padding-left: 10px; }
   .timeline__track { height: 52px; }
   .clip { top: 4px; bottom: 4px; }
-  .clip { font-size: 13px; padding: 0 10px; }
+  .clip { font-size: 13px; padding: 0 8px; }
   .section__head { margin-bottom: 32px; }
   .card__visual { height: auto; aspect-ratio: 4 / 3.4; }
   .card__visual--reels { padding: 20px; gap: 10px; }
