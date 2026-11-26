@@ -1,17 +1,17 @@
 /* Youssef Dorai, portfolio. One page, one system. */
 
 :root {
-  /* colour: from the LinkedIn banner */
-  --sand: #EADFCB;        /* page ground */
-  --sand-2: #E0D2BA;      /* panels behind the work */
-  --sand-3: #D3C1A3;      /* stand-in frames */
-  --ink: #2B1B12;         /* dark brown: text, lines, the close */
-  --muted: #6A5242;       /* labels and meta only */
-  --terra: #A8442A;       /* the one accent */
-  --terra-ink: #FFF7EE;   /* text on the accent */
-  --line: rgba(43, 27, 18, .14);
-  --on-dark: #EADFCB;
-  --on-dark-muted: #C2AE95;
+  /* colour: from the LinkedIn banner (cream, navy, pink-red) */
+  --sand: #F5F2EA;        /* page ground: the banner's cream */
+  --sand-2: #EAE4D6;      /* panels behind the work */
+  --sand-3: #DDD5C3;      /* stand-in frames */
+  --ink: #0B2A48;         /* the banner's navy: text, lines, the close */
+  --muted: #4B5E73;       /* labels and meta only */
+  --terra: #C2305C;       /* the one accent: the banner's pink-red, deepened for contrast */
+  --terra-ink: #FFFFFF;   /* text on the accent */
+  --line: rgba(11, 42, 72, .14);
+  --on-dark: #F5F2EA;
+  --on-dark-muted: #A9B7C6;
 
   /* type */
   --f-display: "Bricolage Grotesque", "Figtree", system-ui, sans-serif;
@@ -106,7 +106,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .btn:active { transform: scale(.97); }
 .btn--primary { background: var(--terra); border-color: var(--terra); color: var(--terra-ink); }
-.btn--primary:hover { background: #923A22; border-color: #923A22; transform: translateY(-1px); }
+.btn--primary:hover { background: #A72750; border-color: #A72750; transform: translateY(-1px); }
 .btn--primary:active { transform: scale(.97); }
 .btn--secondary { background: transparent; color: var(--ink); }
 .btn--secondary:hover { background: var(--ink); color: var(--sand); transform: translateY(-1px); }
@@ -132,9 +132,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   position: absolute; inset: 0; display: grid; place-items: center;
   font: 400 clamp(28px, 4vw, 56px)/1 var(--f-display);
   font-variation-settings: "wdth" 75;
-  color: rgba(43, 27, 18, .32); letter-spacing: -.02em;
+  color: rgba(11, 42, 72, .3); letter-spacing: -.02em;
 }
-.media--portrait.is-missing::before { font-size: clamp(80px, 12vw, 200px); color: rgba(168, 68, 42, .55); }
+.media--portrait.is-missing::before { font-size: clamp(80px, 12vw, 200px); color: rgba(194, 48, 92, .5); }
 /* on localhost only: show which file goes where */
 .is-local .media.is-missing::after {
   content: attr(data-file);
@@ -202,7 +202,7 @@ a.is-todo-hidden { display: none !important; }
   height: 14px; margin-left: var(--label);
   background-image:
     repeating-linear-gradient(90deg, var(--ink) 0 1px, transparent 1px 10%),
-    repeating-linear-gradient(90deg, rgba(43, 27, 18, .3) 0 1px, transparent 1px 2%);
+    repeating-linear-gradient(90deg, rgba(11, 42, 72, .3) 0 1px, transparent 1px 2%);
   background-size: 100% 10px, 100% 6px;
   background-repeat: no-repeat;
 }
@@ -228,9 +228,10 @@ a.is-todo-hidden { display: none !important; }
 }
 .clip::before { left: 4px; }
 .clip::after { right: 4px; }
-.clip--content { background: var(--terra); color: var(--terra-ink); }
-.clip--web { background: var(--ink); color: var(--sand); }
-.clip:hover, .clip:focus-visible { filter: brightness(1.12); }
+.clip--content { background: #2169B3; color: #FFFFFF; }   /* the banner's content clips */
+.clip--web { background: #D7E4E9; color: var(--ink); }    /* the banner's code clips */
+.clip:hover, .clip:focus-visible { filter: brightness(1.1); }
+.clip--web:hover, .clip--web:focus-visible { filter: brightness(.95); }
 .timeline__playhead {
   position: absolute; top: 0; bottom: 0; width: 2px;
   left: calc(var(--label) + (100% - var(--label)) * var(--ph) / 100);
@@ -277,12 +278,12 @@ a.is-todo-hidden { display: none !important; }
   background: var(--sand-2); color: var(--ink);
   box-shadow: inset 3px 0 0 var(--ink);
 }
-#egypt .tags li, #graduation .tags li { box-shadow: inset 3px 0 0 var(--terra); }
+#egypt .tags li, #graduation .tags li { box-shadow: inset 3px 0 0 #2169B3; }
 
 /* browser frame, cut by the panel's foot */
 .browser {
   position: absolute; left: 32px; right: 32px; top: 32px;
-  background: #F6EFE3; border-radius: var(--r-md) var(--r-md) 0 0;
+  background: #FBF9F4; border-radius: var(--r-md) var(--r-md) 0 0;
   box-shadow: 0 0 0 1px var(--line);
   overflow: hidden;
 }
@@ -366,7 +367,7 @@ a.is-todo-hidden { display: none !important; }
 .socials a:hover { background-size: 100% 1px; }
 .closing__legal {
   display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
-  padding-top: 24px; border-top: 1px solid rgba(234, 223, 203, .18);
+  padding-top: 24px; border-top: 1px solid rgba(245, 242, 234, .18);
   font-size: var(--t-small); color: var(--on-dark-muted);
 }
 
