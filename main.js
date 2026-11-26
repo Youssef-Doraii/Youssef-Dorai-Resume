@@ -135,8 +135,8 @@
       const cs = getComputedStyle(root);
       colours = {
         grid: cs.getPropertyValue('--grid').trim(),
-        a: cs.getPropertyValue('--accent').trim(),
-        b: cs.getPropertyValue('--clip-a').trim()
+        a: (cs.getPropertyValue('--trail') || cs.getPropertyValue('--accent')).trim(),
+        b: (cs.getPropertyValue('--trail-2') || cs.getPropertyValue('--clip-a')).trim()
       };
     };
     const size = () => {
@@ -220,7 +220,7 @@
 
   /* ---------- theme from the URL, for comparing: ?theme=banner or ?theme=film ---------- */
   const t = new URLSearchParams(location.search).get('theme');
-  if (t && /^(night|banner|film)$/.test(t)) {
-    if (t === 'night') root.removeAttribute('data-theme'); else root.dataset.theme = t;
+  if (t && /^(gallery|night|banner|film)$/.test(t)) {
+    if (t === 'gallery') root.removeAttribute('data-theme'); else root.dataset.theme = t;
   }
 })();
