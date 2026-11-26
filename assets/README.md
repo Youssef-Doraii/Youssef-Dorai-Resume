@@ -34,11 +34,7 @@ Export them at 720p, H.264, about 2 to 4 MB each. GitHub refuses files over 100 
 link. A version with the stand-in photo is already here. Replace it with a new screenshot once
 your photo is in.
 
-## Links still to fill in (in index.html)
+## Links
 
-Search index.html for `YOUR_`:
-
-- `https://YOUR_GRADUATION_INSTAGRAM_URL`: the graduation reel on Instagram
-
-Until it's set, that link is hidden on the live site. The Egypt reels play on the page
-(their sound is removed, so no music rights issue).
+All links are filled in. The Egypt reels play on the page (their sound is removed, so no
+music rights issue); the graduation play button opens the reel on Instagram.
