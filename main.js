@@ -148,10 +148,16 @@
     };
     // the trail stays in the empty background: never behind the words, the photo,
     // the timeline or the project cards
-    const KEEP_CLEAR = '.nav, .hero__copy, .hero__frame, .timeline, .section__head, .card, .closing';
-    const clearRects = () => [...document.querySelectorAll(KEEP_CLEAR)].map(el => el.getBoundingClientRect())
-      .filter(b => b.bottom > 0 && b.top < h);
-    const blocked = (x, y, rects) => rects.some(b => x + CELL > b.left - 8 && x < b.right + 8 && y + CELL > b.top - 8 && y < b.bottom + 8);
+    // boxes: kept clear whole; text: only the area the words actually cover
+    const KEEP_CLEAR = '.nav, .hero__frame, .timeline, .card, .closing, .btn';
+    const TEXT = '.hero__name, .hero__line, .hero__facts, .section__head h2, .section__lede';
+    const range = document.createRange();
+    const clearRects = () => {
+      const out = [...document.querySelectorAll(KEEP_CLEAR)].map(el => el.getBoundingClientRect());
+      document.querySelectorAll(TEXT).forEach(el => { range.selectNodeContents(el); out.push(...range.getClientRects()); });
+      return out.filter(b => b.bottom > 0 && b.top < h);
+    };
+    const blocked = (x, y, rects) => rects.some(b => x + CELL > b.left - 4 && x < b.right + 4 && y + CELL > b.top - 4 && y < b.bottom + 4);
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
       const rects = heat.size ? clearRects() : [];
@@ -172,13 +178,13 @@
       ctx.stroke();
       // the glow: grid lines near the pointer pick up the accent
       if (pointer) {
-        const g = ctx.createRadialGradient(pointer.x, pointer.y, 0, pointer.x, pointer.y, 200);
+        const g = ctx.createRadialGradient(pointer.x, pointer.y, 0, pointer.x, pointer.y, 220);
         g.addColorStop(0, colours.a); g.addColorStop(1, 'transparent');
-        ctx.globalAlpha = 0.35; ctx.strokeStyle = g; ctx.stroke(); ctx.globalAlpha = 1;
+        ctx.globalAlpha = 0.9; ctx.lineWidth = 1.5; ctx.strokeStyle = g; ctx.stroke(); ctx.globalAlpha = 1; ctx.lineWidth = 1;
       }
     };
     const tick = () => {
-      for (const [k, v] of heat) { const n = v * 0.94 - 0.004; n <= 0 ? heat.delete(k) : heat.set(k, n); }
+      for (const [k, v] of heat) { const n = v * 0.955 - 0.003; n <= 0 ? heat.delete(k) : heat.set(k, n); }
       draw();
       raf = heat.size ? requestAnimationFrame(tick) : 0;
     };
@@ -197,7 +203,31 @@
       if (!raf) raf = requestAnimationFrame(tick);
     };
 
+    // once, after the hero has come in: a wave of squares sweeps left to right,
+    // like a playhead running over the grid, so people see it reacts
+    const sweep = () => {
+      const cols = Math.ceil(w / CELL), rows = Math.ceil(h / CELL);
+      const rects = clearRects();
+      const free = (c, r) => r >= 0 && r < rows && !blocked(c * CELL, r * CELL, rects);
+      for (let c = 0; c <= cols; c++) {
+        setTimeout(() => {
+          // aim for a gentle wave, then take the nearest free square to it
+          const target = Math.round(rows * (0.55 + 0.2 * Math.sin(c / 4)));
+          for (let d = 0; d < rows; d++) {
+            const r = free(c, target + d) ? target + d : free(c, target - d) ? target - d : null;
+            if (r !== null) {
+              heat.set(c + ',' + r, 0.95);
+              if (free(c, r + 1) && Math.random() > 0.5) heat.set(c + ',' + (r + 1), 0.6);
+              break;
+            }
+          }
+          if (!raf) raf = requestAnimationFrame(tick);
+        }, c * 30);
+      }
+    };
+
     readColours(); size();
+    if (!reduce) setTimeout(sweep, 1400);
     addEventListener('resize', size);
     if (!reduce) {
       addEventListener('pointermove', onMove, { passive: true });

@@ -12,7 +12,6 @@ shows the file name it is waiting for.
 | `ifriqiya.jpg` | Ifriqiya screenshot, desktop browser, top of the page. | 1600 x 1000 (16:10) |
 | `immox.jpg` | IMMOX screenshot, desktop browser, top of the page. | 1600 x 1000 (16:10) |
 | `egypt-1.jpg`, `egypt-2.jpg`, `egypt-3.jpg` | One frame from each of three Egypt reels. | 720 x 1280 (9:16) |
-| `graduation.jpg` | One frame from the graduation video. | 720 x 1280 (9:16) |
 
 Keep each JPG under about 300 KB (export at 80% quality, or run it through squoosh.app).
 
@@ -24,7 +23,6 @@ on Instagram or TikTok instead (once you've set those links, below).
 | File | What |
 | --- | --- |
 | `egypt-1.mp4`, `egypt-2.mp4`, `egypt-3.mp4` | The three Egypt reels |
-| `graduation.mp4` | The graduation video |
 
 Export them at 720p, H.264, about 2 to 4 MB each. GitHub refuses files over 100 MB.
 
@@ -37,4 +35,4 @@ your photo is in.
 ## Links
 
 All links are filled in. The Egypt reels play on the page (their sound is removed, so no
-music rights issue); the graduation play button opens the reel on Instagram.
+music rights issue).
