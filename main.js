@@ -230,12 +230,12 @@
     readColours(); size();
     if (!reduce) setTimeout(sweep, 1400);
     addEventListener('resize', size);
-    if (!reduce) {
-      addEventListener('pointermove', onMove, { passive: true });
-      addEventListener('pointerdown', onMove, { passive: true });
-      document.documentElement.addEventListener('pointerleave', () => { last = null; pointer = null; draw(); });
-      addEventListener('blur', () => { last = null; });
-    }
+    // the trail only moves when the visitor moves, so it stays on under reduced motion too;
+    // only the automatic sweep above is skipped there
+    addEventListener('pointermove', onMove, { passive: true });
+    addEventListener('pointerdown', onMove, { passive: true });
+    document.documentElement.addEventListener('pointerleave', () => { last = null; pointer = null; draw(); });
+    addEventListener('blur', () => { last = null; });
     // a theme switch re-reads the colours
     new MutationObserver(() => { readColours(); draw(); }).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
   }
