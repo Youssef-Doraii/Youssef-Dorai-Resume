@@ -297,6 +297,25 @@ a.is-todo-hidden { display: none !important; }
 }
 .section__lede { margin-top: 16px; font-size: var(--t-lead); line-height: 1.5; max-width: 52ch; }
 
+/* ---------- experience: a plain list, newest first ---------- */
+.xp { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); background: var(--bg); }
+.xp__row {
+  display: grid; grid-template-columns: minmax(150px, 3fr) 9fr; gap: 24px;
+  padding: 24px 0; border-bottom: 1px solid var(--line);
+}
+.xp__when { color: var(--muted); font-size: var(--t-small); font-weight: 500; font-variant-numeric: tabular-nums; padding-top: 4px; }
+.xp__role {
+  font-size: var(--t-h3); line-height: 1.2; letter-spacing: -.02em;
+  font-variation-settings: "wdth" 90, "opsz" 36; font-weight: 500;
+}
+.xp__org { display: block; margin-top: 4px; font: 500 var(--t-small)/1.4 var(--f-text); letter-spacing: 0; color: var(--muted); }
+.xp__what p { margin-top: 8px; max-width: 62ch; }
+@media (max-width: 639px) {
+  .xp__row { grid-template-columns: 1fr; gap: 6px; padding: 20px 0; }
+  .xp__when { padding-top: 0; }
+  .nav__links .nav__xp { display: none; }
+}
+
 /* ---------- work cards ---------- */
 .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 72px 24px; }
 .card { scroll-margin-top: calc(var(--nav) + 24px); }

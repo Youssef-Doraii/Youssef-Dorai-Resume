@@ -150,7 +150,7 @@
     // the trail stays in the empty background: never behind the words, the photo,
     // the timeline or the project cards
     // boxes: kept clear whole; text: only the area the words actually cover
-    const KEEP_CLEAR = '.nav, .hero__frame, .timeline, .card, .closing, .btn';
+    const KEEP_CLEAR = '.nav, .hero__frame, .timeline, .card, .closing, .btn, .xp';
     const TEXT = '.hero__name, .hero__line, .hero__facts, .section__head h2, .section__lede';
     const range = document.createRange();
     const clearRects = () => {
