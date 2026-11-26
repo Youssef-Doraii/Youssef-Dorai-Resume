@@ -1,16 +1,17 @@
 /* Youssef Dorai, portfolio. One page, one system. */
 
 :root {
-  /* colour: "gallery", light and quiet. White page, near-black ink, grey details,
-     one touch of recording red. Other themes live below on <html data-theme>. */
-  --bg: #FAFAF9; --panel: #F0F0EE; --standin: #E6E6E3; --frame: #FFFFFF;
-  --text: #141414; --muted: #646462;
-  --accent: #141414; --accent-ink: #FFFFFF; --accent-hover: #3A3A3A;
-  --rec: #D93A3F;
-  --line: rgba(20, 20, 20, .1); --grid: rgba(20, 20, 20, .045);
-  --trail: #CFCFCB; --trail-2: #E2B8B9;
-  --clip-a: #141414; --clip-a-ink: #FFFFFF; --clip-b: #E6E6E3; --clip-b-ink: #141414;
-  --close-bg: #141414; --close-text: #FAFAF9; --close-muted: #9C9C99; --close-line: rgba(250, 250, 249, .16); --close-accent: #D93A3F;
+  /* colour: light and quiet, after the LinkedIn banner without copying it.
+     Soft white page, navy-black ink, a calm blue and pale blue-grey for the work,
+     and the banner's pink-red (softened) for recording details only. */
+  --bg: #FAFAF9; --panel: #EEF2F6; --standin: #E1E8F0; --frame: #FFFFFF;
+  --text: #13213A; --muted: #5A6577;
+  --accent: #17325C; --accent-ink: #FFFFFF; --accent-hover: #234479;
+  --rec: #E04E79;
+  --line: rgba(19, 33, 58, .1); --grid: rgba(19, 33, 58, .045);
+  --trail: #BFD3EE; --trail-2: #F3C4D3;
+  --clip-a: #2E6BC6; --clip-a-ink: #FFFFFF; --clip-b: #DCE6F1; --clip-b-ink: #13213A;
+  --close-bg: #13294B; --close-text: #F4F6FA; --close-muted: #A7B4C8; --close-line: rgba(244, 246, 250, .16); --close-accent: #EE6F95;
 }
 [data-theme="night"] {
   --trail: var(--accent); --trail-2: var(--clip-a); --rec: var(--accent);

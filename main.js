@@ -146,12 +146,20 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       draw();
     };
+    // the trail stays in the empty background: never behind the words, the photo,
+    // the timeline or the project cards
+    const KEEP_CLEAR = '.nav, .hero__copy, .hero__frame, .timeline, .section__head, .card, .closing';
+    const clearRects = () => [...document.querySelectorAll(KEEP_CLEAR)].map(el => el.getBoundingClientRect())
+      .filter(b => b.bottom > 0 && b.top < h);
+    const blocked = (x, y, rects) => rects.some(b => x + CELL > b.left - 8 && x < b.right + 8 && y + CELL > b.top - 8 && y < b.bottom + 8);
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
+      const rects = heat.size ? clearRects() : [];
       // lit squares
       for (const [key, v] of heat) {
         const [c, r] = key.split(',').map(Number);
-        ctx.globalAlpha = v * 0.5;
+        if (blocked(c * CELL, r * CELL, rects)) continue;
+        ctx.globalAlpha = v * 0.85;
         ctx.fillStyle = (c + r) % 3 === 0 ? colours.b : colours.a;
         ctx.fillRect(c * CELL + 1, r * CELL + 1, CELL - 1, CELL - 1);
       }
@@ -164,13 +172,13 @@
       ctx.stroke();
       // the glow: grid lines near the pointer pick up the accent
       if (pointer) {
-        const g = ctx.createRadialGradient(pointer.x, pointer.y, 0, pointer.x, pointer.y, 240);
+        const g = ctx.createRadialGradient(pointer.x, pointer.y, 0, pointer.x, pointer.y, 200);
         g.addColorStop(0, colours.a); g.addColorStop(1, 'transparent');
-        ctx.globalAlpha = 0.55; ctx.strokeStyle = g; ctx.stroke(); ctx.globalAlpha = 1;
+        ctx.globalAlpha = 0.35; ctx.strokeStyle = g; ctx.stroke(); ctx.globalAlpha = 1;
       }
     };
     const tick = () => {
-      for (const [k, v] of heat) { const n = v * 0.955 - 0.003; n <= 0 ? heat.delete(k) : heat.set(k, n); }
+      for (const [k, v] of heat) { const n = v * 0.94 - 0.004; n <= 0 ? heat.delete(k) : heat.set(k, n); }
       draw();
       raf = heat.size ? requestAnimationFrame(tick) : 0;
     };
