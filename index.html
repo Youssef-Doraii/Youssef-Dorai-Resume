@@ -7,7 +7,7 @@
   <meta name="description" content="Youssef Dorai makes social media videos and builds websites in Monastir, Tunisia. See an AI trip planner, a real estate site and reels with 100K+ views.">
   <meta name="page-type" content="service">
   <meta name="site-kind" content="other">
-  <meta name="theme-color" content="#F5F2EA">
+  <meta name="theme-color" content="#FAFAF9">
   <link rel="canonical" href="https://youssef-doraii.github.io/Youssef-Dorai-Resume/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
@@ -38,13 +38,14 @@
     "address": { "@type": "PostalAddress", "addressLocality": "Monastir", "addressCountry": "TN" },
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "ISIMM, Higher Institute of Computer Science and Mathematics of Monastir" },
     "knowsAbout": ["Video editing", "Social media content", "Web development", "Laravel", "Vue.js", "Next.js"],
-    "sameAs": ["https://www.linkedin.com/in/youssef-dorai"]
+    "sameAs": ["https://www.linkedin.com/in/youssef-dorai", "https://www.instagram.com/youssef.doraii/"]
   }
   </script>
 </head>
 <body>
+<canvas class="bg-canvas" aria-hidden="true"></canvas>
 <!--
-  Kind: service (a person who is hired). Palette from the LinkedIn banner: cream, navy, pink-red.
+  Kind: service (a person who is hired). Colour: light and quiet, after the LinkedIn banner, by default; other themes in styles.css via data-theme on <html>.
   Type: Bricolage Grotesque (display) + Figtree (text). Hero: split with an edit timeline.
   Rhythm: one dark band (the contact close). Moment: the email underline draws once.
 
@@ -55,6 +56,7 @@
   <div class="wrap nav__inner">
     <a class="skip-link" href="#top">Skip to content</a>
     <a class="nav__brand" href="#top">Youssef Dorai</a>
+    <span class="rec" aria-hidden="true"><span class="rec__dot"></span>REC <span class="rec__tc" data-timecode>00:00:00:00</span></span>
     <nav aria-label="Main">
       <ul class="nav__links">
         <li><a href="#work">Work</a></li>
@@ -80,8 +82,11 @@
         </div>
       </div>
 
-      <div class="hero__photo media media--portrait" data-file="assets/youssef.jpg" data-initials="YD">
-        <img src="assets/youssef.jpg" alt="Portrait of Youssef Dorai" width="800" height="1000" fetchpriority="high" onerror="this.parentNode.classList.add('is-missing')">
+      <div class="hero__frame">
+        <div class="hero__photo media media--portrait" data-file="assets/youssef.jpg" data-initials="YD">
+        <img src="assets/youssef.jpg" alt="Portrait of Youssef Dorai in a navy blazer" width="960" height="1200" fetchpriority="high" onerror="this.parentNode.classList.add('is-missing')">
+      </div>
+        <span class="vf" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       </div>
 
       <div class="timeline" data-timeline aria-label="Projects on two tracks: content and code" role="group">
@@ -119,7 +124,7 @@
             <div class="browser">
               <div class="browser__bar" aria-hidden="true"><span></span></div>
               <div class="media media--shot" data-file="assets/ifriqiya.jpg" data-initials="Ifriqiya">
-                <img src="assets/ifriqiya.jpg" alt="Ifriqiya trip planner showing a day-by-day plan for a trip in Tunisia" width="1600" height="1000" loading="lazy" onerror="this.parentNode.classList.add('is-missing')">
+                <img src="assets/ifriqiya.jpg" alt="Ifriqiya home page: a medina street with blue doors and the headline about planning a trip in Tunisia" width="1600" height="900" loading="lazy" onerror="this.parentNode.classList.add('is-missing')">
               </div>
             </div>
           </div>
@@ -137,7 +142,7 @@
             <div class="browser">
               <div class="browser__bar" aria-hidden="true"><span></span></div>
               <div class="media media--shot" data-file="assets/immox.jpg" data-initials="IMMOX">
-                <img src="assets/immox.jpg" alt="IMMOX website showing property listings in Monastir" width="1600" height="1000" loading="lazy" onerror="this.parentNode.classList.add('is-missing')">
+                <img src="assets/immox.jpg" alt="IMMOX home page: the Monastir coastline with a search for properties to buy or rent" width="1600" height="900" loading="lazy" onerror="this.parentNode.classList.add('is-missing')">
               </div>
             </div>
           </div>
@@ -147,24 +152,23 @@
             <ul class="tags" aria-label="Built with">
               <li>Next.js</li><li>Firebase</li>
             </ul>
-            <!-- EDIT: put the live IMMOX address here -->
-            <a class="link" href="https://YOUR_IMMOX_URL" target="_blank" rel="noopener">Visit the IMMOX site</a>
+            <a class="link" href="https://immox-website.immoxtn.workers.dev/en" target="_blank" rel="noopener">Visit the IMMOX site</a>
           </div>
         </article>
 
         <article class="card" id="egypt" data-reveal>
           <div class="card__visual card__visual--reels">
             <div class="reel media media--reel" data-reel data-file="assets/egypt-1.jpg">
-              <img src="assets/egypt-1.jpg" alt="Reel filmed in Egypt, first of three" width="720" height="1280" loading="lazy" onerror="this.parentNode.classList.add('is-missing')">
-              <button class="reel__play" type="button" data-src="assets/egypt-1.mp4" aria-label="Play the first Egypt reel"></button>
+              <img src="assets/egypt-1.jpg" alt="Hot air balloons at sunrise over the Nile valley, from the reel Healing" width="720" height="1280" loading="lazy" onerror="this.parentNode.classList.add('is-missing')">
+              <button class="reel__play" type="button" data-src="assets/egypt-1.mp4" aria-label="Play the reel Healing"></button>
             </div>
             <div class="reel media media--reel" data-reel data-file="assets/egypt-2.jpg">
-              <img src="assets/egypt-2.jpg" alt="Reel filmed in Egypt, second of three" width="720" height="1280" loading="lazy" onerror="this.parentNode.classList.add('is-missing')">
-              <button class="reel__play" type="button" data-src="assets/egypt-2.mp4" aria-label="Play the second Egypt reel"></button>
+              <img src="assets/egypt-2.jpg" alt="Split-screen edit: a beach hut, a train window at dusk and a hammock by the sea" width="720" height="1280" loading="lazy" onerror="this.parentNode.classList.add('is-missing')">
+              <button class="reel__play" type="button" data-src="assets/egypt-2.mp4" aria-label="Play the split-screen Egypt reel"></button>
             </div>
             <div class="reel media media--reel" data-reel data-file="assets/egypt-3.jpg">
-              <img src="assets/egypt-3.jpg" alt="Reel filmed in Egypt, third of three" width="720" height="1280" loading="lazy" onerror="this.parentNode.classList.add('is-missing')">
-              <button class="reel__play" type="button" data-src="assets/egypt-3.mp4" aria-label="Play the third Egypt reel"></button>
+              <img src="assets/egypt-3.jpg" alt="The group in the White Desert, from a reel naming each city" width="720" height="1280" loading="lazy" onerror="this.parentNode.classList.add('is-missing')">
+              <button class="reel__play" type="button" data-src="assets/egypt-3.mp4" aria-label="Play the Egypt cities reel"></button>
             </div>
           </div>
           <div class="card__body">
@@ -173,15 +177,13 @@
             <ul class="tags" aria-label="Work done">
               <li>Filming</li><li>Editing</li><li>Blog posts</li>
             </ul>
-            <!-- EDIT: link to the reels (Instagram) or the blog -->
-            <a class="link" href="https://YOUR_EGYPT_REELS_URL" target="_blank" rel="noopener">Watch the Egypt reels</a>
           </div>
         </article>
 
         <article class="card" id="graduation" data-reveal>
-          <div class="card__visual card__visual--video">
-            <div class="reel media media--reel" data-reel data-file="assets/graduation.jpg">
-              <img src="assets/graduation.jpg" alt="Still from Youssef's graduation video" width="720" height="1280" loading="lazy" onerror="this.parentNode.classList.add('is-missing')">
+          <div class="card__visual card__visual--film">
+            <div class="reel media media--film" data-reel data-file="assets/graduation.jpg">
+              <img src="assets/graduation.jpg" alt="Youssef in his graduation gown and sunglasses, a still from the video" width="770" height="433" loading="lazy" onerror="this.parentNode.classList.add('is-missing')">
               <button class="reel__play" type="button" data-src="assets/graduation.mp4" aria-label="Play the graduation video"></button>
             </div>
             <dl class="views">
@@ -193,10 +195,9 @@
             <h3>Graduation video</h3>
             <p>One short video of my graduation day. Almost every view came from people who don't follow me.</p>
             <ul class="tags" aria-label="Work done">
-              <li>Filming</li><li>Editing</li><li>TikTok</li>
+              <li>Filming</li><li>Editing</li><li>Short-form video</li>
             </ul>
-            <!-- EDIT: link to the TikTok post -->
-            <a class="link" href="https://YOUR_GRADUATION_TIKTOK_URL" target="_blank" rel="noopener">Watch it on TikTok</a>
+            <a class="link" href="https://www.instagram.com/reel/DaAoEXOqO-m/" target="_blank" rel="noopener">Watch it on Instagram</a>
           </div>
         </article>
       </div>
@@ -215,9 +216,7 @@
       </div>
       <ul class="socials">
         <li><a href="https://www.linkedin.com/in/youssef-dorai" target="_blank" rel="noopener">LinkedIn</a></li>
-        <!-- EDIT: your Instagram and TikTok profile links -->
-        <li><a href="https://www.instagram.com/YOUR_INSTAGRAM_HANDLE" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="https://www.tiktok.com/@YOUR_TIKTOK_HANDLE" target="_blank" rel="noopener">TikTok</a></li>
+        <li><a href="https://www.instagram.com/youssef.doraii/" target="_blank" rel="noopener">Instagram</a></li>
       </ul>
     </div>
     <div class="closing__legal">
