@@ -322,7 +322,7 @@ a.is-todo-hidden { display: none !important; }
   background: var(--panel); color: var(--text);
   box-shadow: inset 3px 0 0 var(--text);
 }
-#egypt .tags li, #social .tags li { box-shadow: inset 3px 0 0 var(--clip-a); }
+#egypt .tags li, #social .tags li, #bistrot .tags li, #sos .tags li { box-shadow: inset 3px 0 0 var(--clip-a); }
 
 /* browser frame, cut by the panel's foot */
 .browser {
@@ -339,7 +339,9 @@ a.is-todo-hidden { display: none !important; }
 
 /* vertical video */
 .card__visual--reels { display: flex; justify-content: center; gap: 16px; padding: 32px; }
-.card__visual--video { display: flex; align-items: center; gap: 40px; padding: 32px; }
+.card__visual--video { display: flex; align-items: center; gap: 24px; padding: 32px; }
+.card__visual--video .insights { flex: 1; min-width: 0; }
+.insights--single { justify-content: space-between; }
 /* the social media card: a small insights panel built from real numbers */
 .card__visual--stats { display: flex; align-items: center; padding: 32px; }
 .insights {
@@ -506,6 +508,7 @@ a.is-todo-hidden { display: none !important; }
   .card--wide .card__visual { height: auto; }
   .card__visual--film { padding: 20px; gap: 14px; }
   .card__visual--stats { padding: 20px; }
+  .card__visual--video { padding: 20px; gap: 12px; }
   .insights { padding: 20px; }
   .media--film { height: calc(100% - 74px); }
   .browser { left: 20px; right: 20px; top: 20px; }
