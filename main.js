@@ -88,7 +88,8 @@
         if (img && !reel.classList.contains('is-missing')) video.poster = img.currentSrc || img.src;
         reel.appendChild(video);
       }
-      reel.classList.add('is-playing');
+      // keep the still on screen until the video really starts, so it never flashes black
+      video.addEventListener('playing', () => reel.classList.add('is-playing'), { once: true });
       video.play().catch(() => fallback());
       video.addEventListener('error', fallback, { once: true });
 
