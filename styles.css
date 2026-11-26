@@ -229,8 +229,10 @@ a.is-todo-hidden { display: none !important; }
 .timeline {
   grid-column: 1 / -1; grid-row: 3;
   position: relative; margin-top: 32px;
-  border-top: 1px solid var(--line);
-  padding-top: 0;
+  /* a solid white panel, so the background grid never runs through the ruler and tracks */
+  background: var(--frame);
+  border: 1px solid var(--line); border-radius: var(--r-md);
+  overflow: hidden;
   --label: 96px;
   --ph: 0;
 }
@@ -243,8 +245,9 @@ a.is-todo-hidden { display: none !important; }
   background-repeat: no-repeat;
 }
 .timeline__track { display: flex; align-items: center; height: 40px; border-bottom: 1px solid var(--line); }
+.timeline__track:last-child, .timeline__track:nth-last-child(2) { border-bottom: 0; }
 .timeline__label {
-  width: var(--label); flex: none;
+  width: var(--label); flex: none; padding-left: 16px;
   font: 500 var(--t-label)/1 var(--f-text); color: var(--muted);
 }
 .timeline__lane { position: relative; flex: 1; height: 100%; }
@@ -464,7 +467,8 @@ a.is-todo-hidden { display: none !important; }
   .hero__copy .btn-row { margin-top: 24px; }
   .btn-row .btn { flex: 1 1 0; padding: 0 12px; }
   .hero__frame { margin-top: 24px; min-height: 180px; }
-  .timeline { --label: 64px; margin-top: 24px; }
+  .timeline { --label: 72px; margin-top: 24px; }
+  .timeline__label { padding-left: 10px; }
   .timeline__track { height: 52px; }
   .clip { top: 4px; bottom: 4px; }
   .clip { font-size: 13px; padding: 0 10px; }
