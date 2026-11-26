@@ -211,10 +211,12 @@ a.is-todo-hidden { display: none !important; }
 .hero__frame {
   grid-column: 9 / -1; grid-row: 1 / span 2;
   position: relative; align-self: start; justify-self: end;
-  width: 100%; aspect-ratio: 4 / 5;
-  max-height: calc(100svh - var(--nav) - 48px - 64px - 176px);
+  /* keep the photo's own 4:5 shape: on a short screen the frame gets narrower, never squashed */
+  width: min(100%, calc((100svh - var(--nav) - 48px - 64px - 176px) * .8)); aspect-ratio: 4 / 5;
 }
 .hero__photo { position: absolute; inset: 0; border-radius: var(--r-lg); }
+/* the frame can come out wider than the photo on short screens: keep the head in, trim from the bottom */
+.hero__photo img { object-position: center top; background: #fff; }
 
 /* viewfinder corners: they close in on the photo when you point at it */
 .vf { position: absolute; inset: -14px; pointer-events: none; transition: inset .35s var(--ease-out); }
@@ -475,7 +477,7 @@ a.is-todo-hidden { display: none !important; }
     min-height: 220px; max-height: none; margin-top: 32px;
   }
   .vf { inset: -8px; }
-  .hero__photo img { object-position: center 25%; }
+  .hero__photo img { object-position: center 18%; }
   .hero__line { max-width: none; }
 }
 @media (max-width: 760px) {
